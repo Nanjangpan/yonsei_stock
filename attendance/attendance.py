@@ -5,7 +5,8 @@ sys.path.append("../util")
 from kakao_parse import kko
 
 
-
+# "닉네임 완료" 메시지의 존재로 분석을 완료하였는지 체크
+# 월은 꼭 @@년 @월 형식을 지켜줘야 함
 class Attendance:
     def __init__(self, month):
         with open("./raw_data/memberList.txt", 'r', encoding='UTF8') as f:
@@ -42,7 +43,7 @@ class Attendance:
 
 if __name__ == '__main__':
     threshold = 1 # 1월만 1회
-    month = "21년 1월"  # 체크하고 싶은 월수수
+    month = "21년 1월"  # 체크하고 싶은 월
     attend = Attendance(month)
     ban_list = attend.run(threshold)
     print(ban_list)
